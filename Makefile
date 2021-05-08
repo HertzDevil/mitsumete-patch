@@ -1,7 +1,9 @@
+karaoke ?=
+
 ASFLAGS = --cpu 65816
 
 ROM = patched.sfc
-ROM_OBJS = original.o patch.o
+ROM_OBJS = original.o patch.o $(if $(karaoke),karaoke_patch.o )
 ROM_LINKCFG = link.cfg
 
 SEQ = song/song.bin
