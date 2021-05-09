@@ -12,3 +12,5 @@ To build `patched.sfc` in this directory:
 This repository contains the bare minimum needed to insert the song into the game; the original source code did not look like this, because it has to support multiple songs.
 
 The `etc` directory contains pre-built IPS / BPS patches for the V1.1 revision, plus an SPC rip.
+
+A description for the music format is available [here](https://github.com/HertzDevil/mitsumete-patch/blob/main/winkysoft-music-format.md). Mirrors are available on [GitHub Gist](https://gist.github.com/HertzDevil/5674f0c150ea10bd0f26477e8d868d1b) and [Super Famicom Development Wiki](https://wiki.superfamicom.org/winkysoft-music-format).
