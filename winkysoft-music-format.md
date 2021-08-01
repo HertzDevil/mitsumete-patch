@@ -151,6 +151,8 @@ $000B: 75 00    # end loop 1
 # the above repeats `0A 0B 0B 0C 0A 0B 0B 0C 0A 0B 0B 0C 0D` indefinitely
 ```
 
+An indefinite loop resets the [tempo multiplier](#tempo).
+
 ### Pattern
 
 Calls a pattern; the track pointer continues from the given address until the end-of-pattern marker is found, then control returns to the point just after the pattern call. There are no nested patterns; calling a pattern inside another pattern will crash the sound engine.
@@ -312,16 +314,16 @@ Changes the current track's volume. Default is `$40`. Supports envelopes like th
 
 ### Tempo
 
-Sets the tempo to the given BPM (beats per minute). Some BPM values may cause tracks to desync.
+Applies a multiplier to the global tempo, with `$80` being the default. The resulting BPM can overflow if it is too high. Some BPM values may cause tracks to desync.
 
 ```
-79 96 00        # set tempo to 150 BPM
+79 C0 00        # set tempo to 150% (overflows if song BPM is greater than 170)
 ```
 
 The second argument controls the rate of the BPM change. A value of 0 represents an instant change, 1 represents a slow change, and higher values produce a faster change.
 
 ```
-79 64 02        # change tempo to 100 BPM slowly
+79 60 02        # change tempo to 75% slowly
 ```
 
 ### DSP Write
